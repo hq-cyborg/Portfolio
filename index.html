@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hassan Qureshi | Interactive OS Portfolio</title>
+    <meta name="description" content="An interactive, Windows 11-inspired web portfolio showcasing developer skills, projects, and custom utilities in a fully-fledged web OS environment.">
+    <link rel="stylesheet" href="style.css?v=1.0.6">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;700&family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="theme-cyber-dark">
+    <!-- Boot / Lock Screen -->
+    <div id="lock-screen" class="lock-screen active">
+        <div class="lock-screen-bg"></div>
+        <div class="lock-content">
+            <div class="lock-time-container">
+                <h1 id="lock-time">12:00</h1>
+                <p id="lock-date">Thursday, May 21</p>
+            </div>
+            
+            <div class="login-box">
+                <div class="user-avatar-container animate-pulse" style="width: 90px; height: 90px; border-radius: 50%; border: 2.5px solid #0078d4; overflow: hidden; display: flex; justify-content: center; align-items: center; margin: 0 auto 15px; box-shadow: 0 0 20px rgba(0, 120, 212, 0.4);">
+                    <img src="profile.jpg" alt="Hassan Qureshi" style="width: 100%; height: 100%; object-fit: cover;">
+                </div>
+                <h2 class="user-name">Hassan Qureshi</h2>
+                <p class="user-role">Game Developer & Software Engineer</p>
+                
+                <div class="login-action">
+                    <button id="btn-login" class="btn-primary">
+                        <span>Sign In</span>
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="5" y1="12" x2="19" y2="12"></line>
+                            <polyline points="12 5 19 12 12 19"></polyline>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="lock-footer">
+                <p>Press any key or click Sign In to unlock</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Desktop Environment -->
+    <div id="desktop-env" class="desktop-env hidden">
+        <div id="desktop">
+            <!-- Wallpaper backdrop element (can be adjusted via settings) -->
+            <div class="wallpaper-glow"></div>
+            
+            <!-- Desktop Grid Icons -->
+            <div class="desktop-icon" data-app="about" id="icon-about">
+                <div class="icon-wrapper about-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                </div>
+                <span class="icon-label">About Me</span>
+            </div>
+
+            <div class="desktop-icon" data-app="projects" id="icon-projects">
+                <div class="icon-wrapper projects-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
+                        <line x1="12" y1="11" x2="12" y2="17"></line>
+                        <line x1="9" y1="14" x2="15" y2="14"></line>
+                    </svg>
+                </div>
+                <span class="icon-label">Projects</span>
+            </div>
+
+            <div class="desktop-icon" data-app="resume" id="icon-resume">
+                <div class="icon-wrapper resume-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                        <polyline points="14 2 14 8 20 8"></polyline>
+                        <line x1="16" y1="13" x2="8" y2="13"></line>
+                        <line x1="16" y1="17" x2="8" y2="17"></line>
+                        <polyline points="10 9 9 9 8 9"></polyline>
+                    </svg>
+                </div>
+                <span class="icon-label">Resume.pdf</span>
+            </div>
+
+            <div class="desktop-icon" data-app="terminal" id="icon-terminal">
+                <div class="icon-wrapper terminal-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="4 17 10 11 4 5"></polyline>
+                        <line x1="12" y1="19" x2="20" y2="19"></line>
+                    </svg>
+                </div>
+                <span class="icon-label">Terminal</span>
+            </div>
+
+            <div class="desktop-icon" data-app="contact" id="icon-contact">
+                <div class="icon-wrapper contact-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                        <polyline points="22,6 12,13 2,6"></polyline>
+                    </svg>
+                </div>
+                <span class="icon-label">Contact</span>
+            </div>
+
+            <div class="desktop-icon" data-app="settings" id="icon-settings">
+                <div class="icon-wrapper settings-icon">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3"></circle>
+                        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                    </svg>
+                </div>
+                <span class="icon-label">Settings</span>
+            </div>
+
+            <div class="desktop-icon" data-app="paint" id="icon-paint">
+                <div class="icon-wrapper paint-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                        <path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12c0 1.821.487 3.53 1.338 5L2.5 21.5l4.5-.838A9.953 9.953 0 0 0 12 22z"/>
+                        <circle cx="7.5" cy="10.5" r="1.5" fill="#fff"/>
+                        <circle cx="11.5" cy="7.5" r="1.5" fill="#fff"/>
+                        <circle cx="16.5" cy="9.5" r="1.5" fill="#fff"/>
+                    </svg>
+                </div>
+                <span class="icon-label">Paintbrush</span>
+            </div>
+
+            <div class="desktop-icon" data-app="notepad" id="icon-notepad">
+                <div class="icon-wrapper notepad-icon" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                        <polyline points="14 2 14 8 20 8"/>
+                        <line x1="16" y1="13" x2="8" y2="13"/>
+                        <line x1="16" y1="17" x2="8" y2="17"/>
+                    </svg>
+                </div>
+                <span class="icon-label">Notepad</span>
+            </div>
+
+            <!-- Dynamic Window Container (Windows are spawned here) -->
+            <div id="windows-container"></div>
+            
+            <!-- Slide-out Widgets Panel (Windows 11 style) -->
+            <div id="widgets-panel" class="widgets-panel hidden">
+                <div class="widgets-header">
+                    <h3>Widgets</h3>
+                    <button id="btn-close-widgets" title="Close widgets">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                    </button>
+                </div>
+                <div class="widgets-body">
+                    <div class="widget-card weather-widget">
+                        <div class="widget-top">
+                            <div>
+                                <h4>Islamabad, PK</h4>
+                                <h2>32°C</h2>
+                            </div>
+                            <span class="weather-icon">☀️</span>
+                        </div>
+                        <p>Sunny • Humidity 42% • Wind 12 km/h</p>
+                    </div>
+                    <div class="widget-card stats-widget">
+                        <h4>Diagnostic Monitor</h4>
+                        <div class="stat-progress-row">
+                            <span>CPU Usage</span>
+                            <span>14%</span>
+                        </div>
+                        <div class="widget-progress"><div style="width: 14%;"></div></div>
+                        <div class="stat-progress-row" style="margin-top:10px;">
+                            <span>RAM Usage</span>
+                            <span>4.2 GB / 16 GB</span>
+                        </div>
+                        <div class="widget-progress"><div style="width: 26%;"></div></div>
+                    </div>
+                    <div class="widget-card quote-widget">
+                        <h4>Inspirational Log</h4>
+                        <p class="quote-text">"Simplifying complexity is the key to aesthetic design."</p>
+                        <p class="quote-author">— Creative Frontend</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide-out Search Panel (Windows 11 style) -->
+            <div id="search-panel" class="search-panel hidden">
+                <div class="search-panel-input-container">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <input type="text" id="windows-search-input" placeholder="Type here to search apps, files or bio...">
+                </div>
+                <div class="search-results-container">
+                    <div class="search-section">
+                        <h4>Best Match</h4>
+                        <div class="search-item active" data-app="about">
+                            <span class="search-item-icon about-icon">👤</span>
+                            <div class="search-item-info">
+                                <strong>About Hassan Qureshi.txt</strong>
+                                <span>Learn about skills and background</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="search-section" style="margin-top:15px;">
+                        <h4>Quick Search Suggestions</h4>
+                        <div class="search-suggestions-row">
+                            <button class="s-suggestion" data-app="projects">Projects List</button>
+                            <button class="s-suggestion" data-app="resume">Resume CV</button>
+                            <button class="s-suggestion" data-app="terminal">System Terminal</button>
+                            <button class="s-suggestion" data-app="contact">Get in Touch</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Context Menu (Right Click) -->
+            <div id="context-menu" class="context-menu hidden">
+                <div class="menu-item" id="ctx-refresh">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                    <span>Refresh Desktop</span>
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item" id="ctx-theme-cyber">
+                    <div class="menu-dot cyber"></div>
+                    <span>Cyberpunk Theme</span>
+                </div>
+                <div class="menu-item" id="ctx-theme-light">
+                    <div class="menu-dot light"></div>
+                    <span>Glass Light Theme</span>
+                </div>
+                <div class="menu-item" id="ctx-theme-retro">
+                    <div class="menu-dot retro"></div>
+                    <span>Retro Terminal Theme</span>
+                </div>
+                <div class="menu-divider"></div>
+                <div class="menu-item" id="ctx-clean">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line></svg>
+                    <span>Align Grid Icons</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Centered Taskbar (Windows 11 styled) -->
+        <div id="taskbar">
+            <!-- Taskbar Left: Widgets trigger -->
+            <div class="taskbar-left">
+                <button id="btn-widgets" class="taskbar-icon-btn" title="Widgets Panel">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="9" rx="1"/>
+                        <rect x="14" y="3" width="7" height="5" rx="1"/>
+                        <rect x="14" y="12" width="7" height="9" rx="1"/>
+                        <rect x="3" y="16" width="7" height="5" rx="1"/>
+                    </svg>
+                </button>
+            </div>
+            
+            <!-- Taskbar Center: Centered Start & App shortcuts -->
+            <div class="taskbar-center">
+                <!-- Windows 11 start button -->
+                <button id="btn-start" class="taskbar-btn" aria-label="Start Menu" title="Start Menu">
+                    <div class="start-btn-icon">
+                        <!-- Custom Windows 11 Square Quadrant Logo -->
+                        <svg viewBox="0 0 24 24" class="start-logo">
+                            <rect x="3" y="3" width="8.5" height="8.5" fill="currentColor"></rect>
+                            <rect x="12.5" y="3" width="8.5" height="8.5" fill="currentColor"></rect>
+                            <rect x="3" y="12.5" width="8.5" height="8.5" fill="currentColor"></rect>
+                            <rect x="12.5" y="12.5" width="8.5" height="8.5" fill="currentColor"></rect>
+                        </svg>
+                    </div>
+                </button>
+                
+                <!-- Windows 11 search pill trigger -->
+                <div class="taskbar-search-trigger" id="taskbar-search" title="Search">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                    <span>Search</span>
+                </div>
+                
+                <!-- Dynamic active window shortcuts -->
+                <div id="taskbar-shortcuts"></div>
+            </div>
+            
+            <!-- Taskbar Right: System Tray -->
+            <div class="taskbar-right">
+                <div id="system-tray">
+                    <!-- Sound Toggle -->
+                    <button id="tray-sound" class="tray-icon active" title="System Sounds">
+                        <svg id="icon-sound-on" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                        </svg>
+                        <svg id="icon-sound-off" class="hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                            <line x1="23" y1="9" x2="17" y2="15"></line>
+                            <line x1="17" y1="9" x2="23" y2="15"></line>
+                        </svg>
+                    </button>
+                    <!-- Network simulated -->
+                    <div class="tray-icon" title="Internet Connected">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M5 12.55a11 11 0 0 1 14.08 0"></path>
+                            <path d="M1.42 9a16 16 0 0 1 21.16 0"></path>
+                            <path d="M8.53 16.11a6 6 0 0 1 6.95 0"></path>
+                            <line x1="12" y1="20" x2="12.01" y2="20" stroke-linecap="round" stroke-width="3"></line>
+                        </svg>
+                    </div>
+                    <!-- Battery simulated -->
+                    <div class="tray-icon" id="tray-battery" title="Battery: 100%">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <rect x="1" y="6" width="18" height="12" rx="2" ry="2"></rect>
+                            <line x1="23" y1="11" x2="23" y2="13"></line>
+                            <rect id="battery-fill" x="3" y="8" width="14" height="8" rx="1" ry="1" fill="currentColor"></rect>
+                        </svg>
+                    </div>
+                    <!-- Clock -->
+                    <div class="tray-divider"></div>
+                    <div id="system-clock" title="Date & Time">
+                        <span id="tray-time">12:00 PM</span>
+                        <span id="tray-date">05/21/2026</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Start Menu (Windows 11 centered style) -->
+        <div id="start-menu" class="start-menu hidden">
+            <!-- Search field inside Start Menu -->
+            <div class="start-search-container">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                <input type="text" id="start-search-input" placeholder="Search for apps, settings, and documents">
+            </div>
+            
+            <div class="start-menu-sections">
+                <!-- Pinned apps section -->
+                <div class="start-pinned-section">
+                    <div class="section-header">
+                        <h4>Pinned</h4>
+                        <button class="btn-all-apps" onclick="SoundSystem.play('click'); alert('Displaying simulated All Apps grid index!');">All apps <span>&gt;</span></button>
+                    </div>
+                    <div class="start-pinned-grid">
+                        <div class="pinned-app-item" data-app="about">
+                            <div class="pinned-app-icon about-color">👤</div>
+                            <span>About Me</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="projects">
+                            <div class="pinned-app-icon projects-color">📁</div>
+                            <span>Projects</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="resume">
+                            <div class="pinned-app-icon resume-color">📄</div>
+                            <span>Resume CV</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="terminal">
+                            <div class="pinned-app-icon terminal-color">💻</div>
+                            <span>Terminal</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="contact">
+                            <div class="pinned-app-icon contact-color">✉️</div>
+                            <span>Contact</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="settings">
+                            <div class="pinned-app-icon settings-color">⚙️</div>
+                            <span>Settings</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="paint">
+                            <div class="pinned-app-icon" style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);">🎨</div>
+                            <span>Paint</span>
+                        </div>
+                        <div class="pinned-app-item" data-app="notepad">
+                            <div class="pinned-app-icon" style="background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);">📝</div>
+                            <span>Notepad</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Recommended section -->
+                <div class="start-recommended-section">
+                    <div class="section-header">
+                        <h4>Recommended</h4>
+                    </div>
+                    <div class="recommended-list">
+                        <div class="recommended-item" data-app="projects">
+                            <div class="rec-icon">🎮</div>
+                            <div class="rec-info">
+                                <strong>HUSH Horror Game</strong>
+                                <span>Recently published • itch.io</span>
+                            </div>
+                        </div>
+                        <div class="recommended-item" data-app="resume">
+                            <div class="rec-icon">📄</div>
+                            <div class="rec-info">
+                                <strong>Resume_Hassan_Qureshi.pdf</strong>
+                                <span>Added yesterday • 3:12 PM</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bottom Profile / Power Bar -->
+            <div class="start-footer-bar">
+                <div class="start-user-profile">
+                    <div class="user-avatar-tiny" style="background-image: url('profile.jpg'); background-size: cover; background-position: center; border: 1.5px solid var(--text-accent); border-radius: 50%;">
+                    </div>
+                    <span>Hassan Qureshi</span>
+                </div>
+                <button id="btn-start-power" class="start-power-btn" title="Power Options">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                </button>
+                
+                <!-- Windows 11 Power Options Dropup -->
+                <div id="power-dropdown" class="power-dropdown hidden">
+                    <div class="power-dropdown-item" id="power-restart">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
+                        <span>Restart</span>
+                    </div>
+                    <div class="power-dropdown-item" id="power-shutdown">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                        <span>Shut Down</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Power Off / Shutdown overlay screen -->
+    <div id="power-screen" class="power-screen hidden">
+        <div class="power-box">
+            <h2 id="power-message">Shutting down...</h2>
+            <div class="spinner"></div>
+            <p class="power-sub">Please do not turn off your computer.</p>
+        </div>
+        <button id="btn-reboot-trigger" class="hidden-button">Power On</button>
+    </div>
+
+    <script src="app.js?v=1.0.6"></script>
+</body>
+</html>
